@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e9eef3;
+  --foreground: #151b22;
+  --surface: #eef3f8;
+  --surface-strong: #f5f8fc;
+  --muted: #5a6674;
+  --border: #c7d1dc;
+  --brand: #3f556b;
+  --brand-strong: #2f4357;
+  --shadow-soft: 0 14px 34px rgba(10, 16, 24, 0.075);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.82) inset, 0 18px 34px rgba(12, 20, 30, 0.085);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  letter-spacing: 0.008em;
+  line-height: 1.45;
+  background-image:
+    radial-gradient(1200px 560px at 2% -24%, #dce5ee 0%, transparent 66%),
+    radial-gradient(1040px 500px at 102% -24%, #e0e8ef 0%, transparent 64%),
+    linear-gradient(180deg, #e8eef4 0%, #e9eff4 52%, #e6edf4 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(16, 26, 36, 0.009) 40px
+    );
+  background-attachment: fixed, fixed, fixed, fixed;
+}
+
+a {
+  color: inherit;
+}
+
+.app-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.surface-card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--surface-strong) 92%, #eaf1f8) 0%,
+    color-mix(in oklab, var(--surface) 92%, #edf3f8) 54%,
+    color-mix(in oklab, var(--surface-strong) 95%, #eff4f9) 100%
+  );
+  border: 1px solid color-mix(in oklab, var(--border) 90%, #ffffff);
+  border-radius: 26px;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(1.5px);
+}
+
+.soft-card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--surface-strong) 92%, #e8eef5) 0%,
+    color-mix(in oklab, var(--surface) 95%, #eff3f7) 100%
+  );
+  border: 1px solid color-mix(in oklab, var(--border) 92%, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(12, 20, 30, 0.055);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  padding: 7px 13px;
+  font-size: 12px;
+  color: var(--muted);
+  background: color-mix(in oklab, var(--surface-strong) 90%, #e8edf2);
+}
+
+.brand-link {
+  color: var(--brand-strong);
+  font-weight: 700;
+}
+
+.brand-link:hover {
+  color: var(--brand);
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--brand) 65%, #ffffff);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--brand) 22%, #ffffff);
+}
