@@ -2,7 +2,6 @@ services:
   - type: web
     name: ravion
     runtime: node
-    plan: starter
     buildCommand: npm ci && npm run build
     startCommand: npm run start -- -p $PORT
     envVars:
