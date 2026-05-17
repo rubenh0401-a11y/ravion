@@ -1,10 +1,5 @@
 import { Resend } from "resend";
 
-/**
- * Shared Resend client
- */
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const FROM = process.env.RESEND_FROM || "Schlichtung <onboarding@resend.dev>";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
@@ -31,7 +26,7 @@ export async function sendEmail(args: {
   subject: string;
   html: string;
 }) {
-  mustHave(process.env.RESEND_API_KEY, "RESEND_API_KEY");
+  const resend = new Resend(mustHave(process.env.RESEND_API_KEY, "RESEND_API_KEY"));
 
   return resend.emails.send({
     from: FROM,
