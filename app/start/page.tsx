@@ -31,8 +31,10 @@ const copy = {
       { t: "3. Vergleich senden", d: "Nur mit deiner Freigabe geht das Angebot raus." },
     ],
     optionsTitle: "Wähle den passenden Falltyp",
+    optionsEyebrow: "Einstieg",
     optionsHint: "Der Wechsel zu einem anderen Durchsetzungsweg bleibt jederzeit möglich.",
     cta: "Fall starten",
+    ctaSubline: "Unverbindlich und ohne Lock-in",
     notice: "Hinweis: Für Verbraucher im B2C ist Ravion kostenfrei. In B2B/C2C fallen Erfolgsgebühren an. Einschätzungen sind unverbindlich und keine Rechtsberatung.",
     options: [
       {
@@ -76,8 +78,10 @@ const copy = {
       { t: "3. Send proposal", d: "The offer is sent only with your explicit approval." },
     ],
     optionsTitle: "Choose the right case type",
+    optionsEyebrow: "Start",
     optionsHint: "You can still switch to another enforcement route at any point.",
     cta: "Start case",
+    ctaSubline: "Non-binding and no lock-in",
     notice: "Note: Ravion is free for consumers in B2C. In B2B/C2C, success-based fees apply. Assessments are non-binding and not legal advice.",
     options: [
       {
@@ -141,7 +145,7 @@ export default async function StartPage() {
             <h1 className="text-4xl font-black leading-tight tracking-tight text-slate-900 sm:text-5xl">{t.title}</h1>
             <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">{t.lead}</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/cases/new" className="rounded-full bg-blue-800 px-7 py-3 text-sm font-bold text-white shadow-xl ring-1 ring-blue-800/30 transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50">Fall prüfen</Link>
+              <Link href="/cases/new" className="rounded-full bg-blue-800 px-7 py-3 text-sm font-bold text-white shadow-xl ring-1 ring-blue-800/30 transition hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50">{t.primaryCta}</Link>
               <Link href="/passagierrechte" className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50">{t.secondaryCta}</Link>
             </div>
           </div>
@@ -181,7 +185,7 @@ export default async function StartPage() {
         <section className="mt-10 rounded-[30px] border border-slate-200 bg-white p-6 shadow-[0_18px_45px_-28px_rgba(15,23,42,0.35)] sm:p-8">
           <div className="mb-6 grid gap-3 border-b border-slate-200 pb-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">Einstieg</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">{t.optionsEyebrow}</p>
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-[2rem]">{t.optionsTitle}</h2>
             </div>
             <p className="max-w-[42ch] text-sm leading-relaxed text-slate-600 sm:text-right">{t.optionsHint}</p>
@@ -204,7 +208,7 @@ export default async function StartPage() {
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">{o.desc}</p>
                 <div className="mt-6 border-t border-slate-200 pt-4">
                   <p className="text-sm font-semibold text-slate-800">{t.cta}</p>
-                  <p className="mt-1 text-xs text-slate-500">Unverbindlich und ohne Lock-in</p>
+                  <p className="mt-1 text-xs text-slate-500">{t.ctaSubline}</p>
                 </div>
               </Link>
             ))}

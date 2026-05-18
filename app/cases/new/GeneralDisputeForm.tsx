@@ -30,6 +30,9 @@ const copy = {
     uploadHint:
       "Lade relevante Dokumente hoch (z. B. Vertrag, Rechnung, Chat-/E-Mail-Verlauf, Belege).",
     limits: "Optional - max. 8 Dateien, je Datei max. 10 MB, erlaubt: PDF/PNG/JPG.",
+    chooseFiles: "Dateien auswählen",
+    noFiles: "Keine Datei ausgewählt",
+    filesSelected: "Dateien ausgewählt",
     agree:
       "Ich bestätige, dass die Angaben korrekt sind. Einschätzung unverbindlich, keine Rechtsberatung.",
     submit: "Fall einreichen ->",
@@ -58,6 +61,9 @@ const copy = {
     uploadHint:
       "Upload relevant documents (e.g. contract, invoice, email/chat trail, receipts).",
     limits: "Optional - max 8 files, max 10 MB each, allowed: PDF/PNG/JPG.",
+    chooseFiles: "Choose files",
+    noFiles: "No file selected",
+    filesSelected: "files selected",
     agree:
       "I confirm the information is correct. Assessment is non-binding and not legal advice.",
     submit: "Submit case ->",
@@ -216,7 +222,14 @@ export default function GeneralDisputeForm({
         <h2 className="text-lg font-semibold">{t.s4}</h2>
         <div className="rounded-2xl border p-4 space-y-2">
           <div className="text-sm text-gray-700">{t.uploadHint}</div>
-          <input type="file" name="attachments" multiple className="block w-full text-sm" accept=".pdf,.png,.jpg,.jpeg" />
+          <FilePicker
+            name="attachments"
+            multiple
+            accept=".pdf,.png,.jpg,.jpeg"
+            chooseLabel={t.chooseFiles}
+            emptyLabel={t.noFiles}
+            selectedLabel={t.filesSelected}
+          />
           <div className="text-xs text-gray-500">{t.limits}</div>
         </div>
       </section>
@@ -268,5 +281,38 @@ function Field({
         className="w-full rounded-xl border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-black"
       />
     </div>
+  );
+}
+
+function FilePicker({
+  name,
+  accept,
+  multiple = false,
+  chooseLabel,
+  emptyLabel,
+  selectedLabel,
+}: {
+  name: string;
+  accept?: string;
+  multiple?: boolean;
+  chooseLabel: string;
+  emptyLabel: string;
+  selectedLabel: string;
+}) {
+  const [count, setCount] = useState(0);
+
+  return (
+    <label className="flex flex-wrap items-center gap-3 text-sm">
+      <span className="rounded-xl border px-4 py-2 font-medium">{chooseLabel}</span>
+      <span className="text-gray-700">{count > 0 ? `${count} ${selectedLabel}` : emptyLabel}</span>
+      <input
+        type="file"
+        name={name}
+        multiple={multiple}
+        accept={accept}
+        className="sr-only"
+        onChange={(e) => setCount(e.currentTarget.files?.length ?? 0)}
+      />
+    </label>
   );
 }
