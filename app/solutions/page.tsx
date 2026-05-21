@@ -348,6 +348,7 @@ const copy = {
 export default async function SolutionsPage() {
   const lang: SiteLanguage = await getSiteLanguage();
   const t = copy[lang];
+  const videoSrc = lang === "de" ? "/solutions-video-de.mp4" : "/solutions-video.mp4";
 
   return (
     <main className="px-4 pb-14 pt-7 sm:px-6 sm:pb-16 sm:pt-9 lg:pb-20 lg:pt-10">
@@ -396,7 +397,7 @@ export default async function SolutionsPage() {
               </div>
               <div className="overflow-hidden rounded-[22px] border shadow-sm" style={{ borderColor: "var(--border)", background: "#111827" }}>
                 <video className="aspect-video h-full w-full bg-[#f5f8fc] object-contain" controls playsInline preload="metadata" poster="/ravion-logo.png">
-                  <source src="/solutions-video.mp4" type="video/mp4" />
+                  <source src={videoSrc} type="video/mp4" />
                   {t.videoFallback}
                 </video>
               </div>
