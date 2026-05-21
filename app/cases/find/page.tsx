@@ -1,8 +1,7 @@
-import { cookies } from "next/headers";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 import FindCasesClient from "./FindCasesClient";
 
 export default async function FindCasesPage() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang = await getSiteLanguage();
   return <FindCasesClient lang={lang} />;
 }

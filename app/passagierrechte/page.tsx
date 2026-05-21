@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
 import type { Metadata } from "next";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
   title: "Passagierrechte",
@@ -49,8 +49,7 @@ const copy = {
 } as const;
 
 export default async function PassengerRightsPage() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang = await getSiteLanguage();
   const t = copy[lang];
 
   return (

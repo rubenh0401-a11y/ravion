@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { cookies } from "next/headers";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions",
@@ -258,8 +258,7 @@ const copy: Record<
 };
 
 export default async function TermsPage() {
-  const cookieStore = await cookies();
-  const lang: Lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang: Lang = await getSiteLanguage();
   const t = copy[lang];
 
   return (

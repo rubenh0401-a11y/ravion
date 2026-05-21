@@ -1,4 +1,4 @@
-import { cookies } from "next/headers";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 import Link from "next/link";
 import type { Metadata } from "next";
 import InteractiveFlow from "./InteractiveFlow";
@@ -272,8 +272,7 @@ const copy = {
 } as const;
 
 export default async function HowItWorksPage() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang = await getSiteLanguage();
   const t = copy[lang];
 
   return (

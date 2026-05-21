@@ -2,8 +2,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import SiteHeader from "./SiteHeader";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -44,8 +44,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang = await getSiteLanguage();
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",

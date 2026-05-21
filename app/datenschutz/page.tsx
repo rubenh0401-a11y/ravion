@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -7,8 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default async function PrivacyPage() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang = await getSiteLanguage();
 
   return (
     <main className="px-4 pb-12 pt-7 sm:px-6 sm:pb-14 sm:pt-9 lg:pb-16 lg:pt-10">

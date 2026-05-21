@@ -1,6 +1,6 @@
 ﻿import Link from "next/link";
-import { cookies } from "next/headers";
 import type { Metadata } from "next";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
   title: "Start",
@@ -132,8 +132,7 @@ function AdvantageGlyph({ icon }: { icon: AdvantageIcon }) {
 }
 
 export default async function StartPage() {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang = await getSiteLanguage();
   const t = copy[lang];
 
   return (

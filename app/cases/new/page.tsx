@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
 import type { Metadata } from "next";
 import FlightRightsForm from "./FlightRightsForm";
 import GeneralDisputeForm from "./GeneralDisputeForm";
 import RailRightsForm from "./RailRightsForm";
+import { getSiteLanguage } from "@/lib/siteLanguage";
 
 type Relation = "B2C" | "B2B" | "C2C";
 type B2CSub = "flight_rights" | "rail_rights" | "other_concern";
@@ -151,8 +151,7 @@ export default async function NewCasePage({
   const sp = await searchParams;
   const relation = sp.relation;
   const sub = sp.sub;
-  const cookieStore = await cookies();
-  const lang: Lang = cookieStore.get("site_lang")?.value === "de" ? "de" : "en";
+  const lang: Lang = await getSiteLanguage();
   const t = copy[lang];
 
   if (!relation) {
