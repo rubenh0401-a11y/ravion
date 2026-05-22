@@ -89,11 +89,15 @@ export async function POST(req: Request) {
        ✅ NEU: Eingangsbestätigung
     ------------------------------ */
     if (data.contact_email && data.review_due_at) {
-      await sendCaseReceivedEmail({
-        to: data.contact_email,
-        caseId: data.id,
-        accessToken: data.access_token ?? null,
-      });
+      try {
+        await sendCaseReceivedEmail({
+          to: data.contact_email,
+          caseId: data.id,
+          accessToken: data.access_token ?? null,
+        });
+      } catch (emailError) {
+        console.error("sendCaseReceivedEmail failed:", emailError);
+      }
     }
 
     return NextResponse.json(
@@ -106,7 +110,8 @@ export async function POST(req: Request) {
         },
       }
     );
-  } catch {
+  } catch (error) {
+    console.error("create case failed:", error);
     return NextResponse.json({ error: "Bad request" }, { status: 400 });
   }
 }
