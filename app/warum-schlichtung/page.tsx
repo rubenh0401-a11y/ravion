@@ -4,7 +4,11 @@ import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
   title: "Warum Ravion",
-  description: "Vergleich der Optionen: Ravion, Inkassodienstleister, Anwalt und öffentliche Schlichtung.",
+  description:
+    "Warum Ravion: digitale außergerichtliche Streitbeilegung im Vergleich zu Inkassodienstleistern, Anwalt und öffentlicher Schlichtung.",
+  alternates: {
+    canonical: "/warum-schlichtung",
+  },
 };
 
 type Lang = "de" | "en";

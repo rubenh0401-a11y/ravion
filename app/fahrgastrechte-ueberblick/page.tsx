@@ -3,8 +3,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fahrgastrechte Überblick",
-  description: "Kompakter Überblick zu Fahrgastrechten bei Bahnreisen: Verspätung, Ausfall, Erstattung, Ersatzbeförderung und Hilfeleistungen.",
+  title: "Fahrgastrechte Überblick: Bahn-Verspätung, Ausfall und Erstattung",
+  description:
+    "Kompakter Überblick zu Fahrgastrechten bei Bahnreisen: Verspätung, Zugausfall, Erstattung, Ersatzbeförderung und Hilfeleistungen.",
+  alternates: {
+    canonical: "/fahrgastrechte-ueberblick",
+  },
 };
 
 const copy = {

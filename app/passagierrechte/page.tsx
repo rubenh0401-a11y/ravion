@@ -3,8 +3,12 @@ import type { Metadata } from "next";
 import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
-  title: "Passagierrechte",
-  description: "Überblick zu Fluggastrechten und Fahrgastrechten mit direktem Einstieg in deinen Fall.",
+  title: "Passagierrechte: Fluggastrechte und Fahrgastrechte",
+  description:
+    "Überblick zu Passagierrechten, Fluggastrechten und Fahrgastrechten mit direktem Einstieg in deinen Ravion-Fall.",
+  alternates: {
+    canonical: "/passagierrechte",
+  },
 };
 
 const copy = {

@@ -3,8 +3,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Fluggastrechte Überblick",
-  description: "Regeln, Entschädigungshöhen und typische Fälle nach EU 261/2004 im kompakten Überblick.",
+  title: "Fluggastrechte Überblick: Entschädigung bei Flugausfall und Verspätung",
+  description:
+    "Kompakter Überblick zu Fluggastrechten nach EU 261/2004: Entschädigung, Verspätung, Flugausfall, Überbuchung und typische Ausnahmen.",
+  alternates: {
+    canonical: "/fluggastrechte-ueberblick",
+  },
 };
 
 type CaseBlock = {

@@ -16,22 +16,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://www.ravion.me";
+const title = "Ravion - Ansprüche digital und außergerichtlich klären";
+const description =
+  "Ravion hilft Verbrauchern, Fluggastrechte und andere Ansprüche digital zu strukturieren, bewerten zu lassen und ohne Kostenrisiko einen Vergleichsvorschlag vorzubereiten.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Ravion - Digitale außergerichtliche Streitbeilegung",
+    default: title,
     template: "%s | Ravion",
   },
-  description: "Ravion hilft dir, Ansprüche digital, transparent und ohne Kostenrisiko für Verbraucher durchzusetzen.",
+  description,
+  applicationName: "Ravion",
+  authors: [{ name: "Ravion UG" }],
+  creator: "Ravion UG",
+  publisher: "Ravion UG",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Ravion - Digitale außergerichtliche Streitbeilegung",
-    description: "Ansprüche digital einreichen, bewerten lassen und strukturiert verhandeln.",
+    title,
+    description,
+    url: siteUrl,
+    siteName: "Ravion",
     type: "website",
     locale: "de_DE",
+    images: [
+      {
+        url: "/ravion-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Ravion",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ravion",
-    description: "Digitale außergerichtliche Streitbeilegung.",
+    title,
+    description,
+    images: ["/ravion-logo.png"],
   },
   robots: {
     index: true,
@@ -52,12 +76,23 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Ravion",
-    logo: "/ravion-logo.png",
+    url: siteUrl,
+    logo: `${siteUrl}/ravion-logo.png`,
+    email: "service@ravion.me",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Sieben-Schwaben-Weg 4",
+      postalCode: "50997",
+      addressLocality: "Köln",
+      addressCountry: "DE",
+    },
   };
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Ravion",
+    url: siteUrl,
+    inLanguage: lang === "en" ? "en" : "de",
   };
 
   return (

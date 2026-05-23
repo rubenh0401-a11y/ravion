@@ -5,7 +5,11 @@ import InteractiveFlow from "./InteractiveFlow";
 
 export const metadata: Metadata = {
   title: "Wie es funktioniert",
-  description: "So läuft dein Fall bei Ravion ab: Einreichen, bewerten, Vergleichsvorschlag und Entscheidung.",
+  description:
+    "So funktioniert Ravion: Fall digital einreichen, Erfolgschance bewerten lassen, Vergleichsvorschlag prüfen und selbst entscheiden.",
+  alternates: {
+    canonical: "/wie-es-funktioniert",
+  },
 };
 
 const copy = {

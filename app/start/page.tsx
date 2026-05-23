@@ -3,8 +3,12 @@ import type { Metadata } from "next";
 import { getSiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
-  title: "Start",
-  description: "Ravion: digitale außergerichtliche Streitbeilegung für B2C, B2B und C2C.",
+  title: "Ansprüche klären, ohne Kosten und ohne Risiko",
+  description:
+    "Starte deinen Fall bei Ravion. Wir strukturieren deinen Anspruch digital, bewerten die Erfolgschance und bereiten einen Vergleichsvorschlag vor.",
+  alternates: {
+    canonical: "/start",
+  },
 };
 
 type AdvantageIcon = "offer" | "cost" | "safety";
