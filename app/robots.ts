@@ -1,6 +1,12 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
+import { baseUrlForHost } from "@/lib/seoDomains";
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const headerStore = await headers();
+  const host = headerStore.get("x-forwarded-host") ?? headerStore.get("host");
+  const baseUrl = baseUrlForHost(host);
+
   return {
     rules: [
       {
@@ -9,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin", "/api", "/dashboard", "/solutions"],
       },
     ],
-    sitemap: "https://www.ravion.me/sitemap.xml",
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

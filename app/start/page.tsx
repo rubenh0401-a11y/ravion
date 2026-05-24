@@ -1,14 +1,13 @@
 ﻿import Link from "next/link";
 import type { Metadata } from "next";
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { seoAlternates } from "@/lib/seoDomains";
 
 export const metadata: Metadata = {
   title: "Ansprüche klären, ohne Kosten und ohne Risiko",
   description:
     "Starte deinen Fall bei Ravion. Wir strukturieren deinen Anspruch digital, bewerten die Erfolgschance und bereiten einen Vergleichsvorschlag vor.",
-  alternates: {
-    canonical: "/start",
-  },
+  alternates: seoAlternates("/start"),
 };
 
 type AdvantageIcon = "offer" | "cost" | "safety";

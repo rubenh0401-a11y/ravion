@@ -1,4 +1,5 @@
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { seoAlternates } from "@/lib/seoDomains";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -6,9 +7,7 @@ export const metadata: Metadata = {
   title: "Fahrgastrechte Überblick: Bahn-Verspätung, Ausfall und Erstattung",
   description:
     "Kompakter Überblick zu Fahrgastrechten bei Bahnreisen: Verspätung, Zugausfall, Erstattung, Ersatzbeförderung und Hilfeleistungen.",
-  alternates: {
-    canonical: "/fahrgastrechte-ueberblick",
-  },
+  alternates: seoAlternates("/fahrgastrechte-ueberblick"),
 };
 
 const copy = {

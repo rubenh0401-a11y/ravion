@@ -1,14 +1,13 @@
 ﻿import Link from "next/link";
 import type { Metadata } from "next";
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { seoAlternates } from "@/lib/seoDomains";
 
 export const metadata: Metadata = {
   title: "Warum Ravion",
   description:
     "Warum Ravion: digitale außergerichtliche Streitbeilegung im Vergleich zu Inkassodienstleistern, Anwalt und öffentlicher Schlichtung.",
-  alternates: {
-    canonical: "/warum-schlichtung",
-  },
+  alternates: seoAlternates("/warum-schlichtung"),
 };
 
 type Lang = "de" | "en";

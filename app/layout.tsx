@@ -2,8 +2,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { headers } from "next/headers";
 import SiteHeader from "./SiteHeader";
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { baseUrlForHost, primaryDomain } from "@/lib/seoDomains";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,13 +18,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://www.ravion.me";
 const title = "Ravion - Ansprüche digital und außergerichtlich klären";
 const description =
   "Ravion hilft Verbrauchern, Fluggastrechte und andere Ansprüche digital zu strukturieren, bewerten zu lassen und ohne Kostenrisiko einen Vergleichsvorschlag vorzubereiten.";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+export async function generateMetadata(): Promise<Metadata> {
+  const headerStore = await headers();
+  const host = headerStore.get("x-forwarded-host") ?? headerStore.get("host");
+  const siteUrl = baseUrlForHost(host);
+
+  return {
+    metadataBase: new URL(siteUrl),
   title: {
     default: title,
     template: "%s | Ravion",
@@ -32,9 +38,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Ravion UG" }],
   creator: "Ravion UG",
   publisher: "Ravion UG",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title,
     description,
@@ -64,7 +67,8 @@ export const metadata: Metadata = {
   verification: {
     google: "oQ8qqk1Dd0lXpyFVAemPEIlJyy_Q98QBMmJ_y_rubJA",
   },
-};
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -76,8 +80,8 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Ravion",
-    url: siteUrl,
-    logo: `${siteUrl}/ravion-logo.png`,
+    url: primaryDomain,
+    logo: `${primaryDomain}/ravion-logo.png`,
     email: "service@ravion.me",
     address: {
       "@type": "PostalAddress",
@@ -91,7 +95,7 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Ravion",
-    url: siteUrl,
+    url: primaryDomain,
     inLanguage: lang === "en" ? "en" : "de",
   };
 

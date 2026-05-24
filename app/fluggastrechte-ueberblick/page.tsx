@@ -1,4 +1,5 @@
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { seoAlternates } from "@/lib/seoDomains";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -6,9 +7,7 @@ export const metadata: Metadata = {
   title: "Fluggastrechte Überblick: Entschädigung bei Flugausfall und Verspätung",
   description:
     "Kompakter Überblick zu Fluggastrechten nach EU 261/2004: Entschädigung, Verspätung, Flugausfall, Überbuchung und typische Ausnahmen.",
-  alternates: {
-    canonical: "/fluggastrechte-ueberblick",
-  },
+  alternates: seoAlternates("/fluggastrechte-ueberblick"),
 };
 
 type CaseBlock = {

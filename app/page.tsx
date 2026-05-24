@@ -1,12 +1,11 @@
+import { seoAlternates } from "@/lib/seoDomains";
 import StartPage from "./start/page";
 
 export const metadata = {
   title: "Ravion - Ansprüche klären, ohne Kosten und ohne Risiko",
   description:
     "Ravion strukturiert deinen Fall digital, bewertet die Erfolgschance und bereitet einen Vergleichsvorschlag vor - für Verbraucher ohne Kostenrisiko.",
-  alternates: {
-    canonical: "/",
-  },
+  alternates: seoAlternates("/"),
   openGraph: {
     title: "Ravion - Ansprüche klären, ohne Kosten und ohne Risiko",
     description:

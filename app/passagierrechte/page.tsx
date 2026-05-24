@@ -1,14 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { seoAlternates } from "@/lib/seoDomains";
 
 export const metadata: Metadata = {
   title: "Passagierrechte: Fluggastrechte und Fahrgastrechte",
   description:
     "Überblick zu Passagierrechten, Fluggastrechten und Fahrgastrechten mit direktem Einstieg in deinen Ravion-Fall.",
-  alternates: {
-    canonical: "/passagierrechte",
-  },
+  alternates: seoAlternates("/passagierrechte"),
 };
 
 const copy = {

@@ -1,4 +1,5 @@
 import { getSiteLanguage } from "@/lib/siteLanguage";
+import { seoAlternates } from "@/lib/seoDomains";
 import Link from "next/link";
 import type { Metadata } from "next";
 import InteractiveFlow from "./InteractiveFlow";
@@ -7,9 +8,7 @@ export const metadata: Metadata = {
   title: "Wie es funktioniert",
   description:
     "So funktioniert Ravion: Fall digital einreichen, Erfolgschance bewerten lassen, Vergleichsvorschlag prüfen und selbst entscheiden.",
-  alternates: {
-    canonical: "/wie-es-funktioniert",
-  },
+  alternates: seoAlternates("/wie-es-funktioniert"),
 };
 
 const copy = {

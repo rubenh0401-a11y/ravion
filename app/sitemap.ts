@@ -1,30 +1,25 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
+import { baseUrlForHost, publicRoutes, seoDomains } from "@/lib/seoDomains";
 
-const baseUrl = "https://www.ravion.me";
-
-const routes = [
-  "",
-  "/start",
-  "/passagierrechte",
-  "/fluggastrechte-ueberblick",
-  "/fahrgastrechte-ueberblick",
-  "/warum-schlichtung",
-  "/wie-es-funktioniert",
-  "/cases/new",
-  "/cases/find",
-  "/hilfe-kontakt",
-  "/impressum",
-  "/datenschutz",
-  "/agb",
-];
-
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const headerStore = await headers();
+  const host = headerStore.get("x-forwarded-host") ?? headerStore.get("host");
+  const baseUrl = baseUrlForHost(host);
   const now = new Date();
 
-  return routes.map((route) => ({
+  return publicRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: now,
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : route.startsWith("/cases") ? 0.5 : 0.7,
+    alternates: {
+      languages: {
+        en: `${seoDomains.en}${route}`,
+        "en-GB": `${seoDomains["en-GB"]}${route}`,
+        "de-AT": `${seoDomains["de-AT"]}${route}`,
+        "de-CH": `${seoDomains["de-CH"]}${route}`,
+      },
+    },
   }));
 }
