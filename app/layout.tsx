@@ -101,6 +101,10 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
+      <head>
+        <meta name="google-site-verification" content="oQ8qqk1Dd0lXpyFVAemPEIlJyy_Q98QBMmJ_y_rubJA" />
+        <meta name="google-site-verification" content="LCxkbsJpSlcKj9ySyMbvCUtvLLZG4Lf2skzazXXgSxA" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
         <script type="application/ld+json" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
