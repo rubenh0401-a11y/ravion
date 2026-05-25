@@ -15,8 +15,6 @@ export const publicRoutes = [
   "/fahrgastrechte-ueberblick",
   "/warum-schlichtung",
   "/wie-es-funktioniert",
-  "/cases/new",
-  "/cases/find",
   "/hilfe-kontakt",
   "/impressum",
   "/datenschutz",
