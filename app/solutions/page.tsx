@@ -345,8 +345,14 @@ const copy = {
   },
 } as const;
 
-export default async function SolutionsPage() {
-  const lang: SiteLanguage = await getSiteLanguage();
+export default async function SolutionsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string; language?: string }>;
+}) {
+  const params = await searchParams;
+  const requestedLang = params?.lang ?? params?.language;
+  const lang: SiteLanguage = requestedLang === "de" || requestedLang === "en" ? requestedLang : await getSiteLanguage();
   const t = copy[lang];
   const videoSrc = lang === "de" ? "/solutions-video-de.mp4" : "/solutions-video.mp4";
 
