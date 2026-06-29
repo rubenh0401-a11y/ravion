@@ -6,10 +6,6 @@ export const metadata: Metadata = {
   title: "Solutions for Airlines",
   description:
     "Ravion helps airlines resolve passenger compensation disputes before legal escalation.",
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 const copy = {
