@@ -52,6 +52,8 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
     startsActive(pathname, "/passagierrechte") ||
     startsActive(pathname, "/fluggastrechte-ueberblick") ||
     startsActive(pathname, "/fahrgastrechte-ueberblick");
+  const solutionsActive = startsActive(pathname, "/solutions");
+  const solutionsLabel = lang === "en" ? "For airlines" : "Für Airlines";
 
   return (
     <header className="sticky top-0 z-30 px-4 pt-4 sm:px-6">
@@ -82,6 +84,25 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
             </div>
 
             <nav className="hidden items-center gap-2 sm:flex">
+              <Link
+                href="/solutions"
+                className={`mr-1 -translate-y-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold shadow-sm transition hover:-translate-y-2 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+                  solutionsActive ? "text-white" : "text-blue-900"
+                }`}
+                style={
+                  solutionsActive
+                    ? {
+                        borderColor: "var(--brand)",
+                        background: "var(--brand)",
+                      }
+                    : {
+                        borderColor: "color-mix(in oklab, var(--brand) 42%, transparent)",
+                        background: "color-mix(in oklab, #ffffff 92%, var(--brand))",
+                      }
+                }
+              >
+                {solutionsLabel}
+              </Link>
               {navItems.map((item) => {
                 const active =
                   item.href === "/passagierrechte" ? passengerActive : startsActive(pathname, item.href);
@@ -156,6 +177,26 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
 
           {open ? (
             <nav className="mt-3 grid gap-2 sm:hidden">
+              <Link
+                href="/solutions"
+                onClick={() => setOpen(false)}
+                className={`mb-1 block rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm ${
+                  solutionsActive ? "text-white" : "text-blue-900"
+                }`}
+                style={
+                  solutionsActive
+                    ? {
+                        borderColor: "var(--brand)",
+                        background: "var(--brand)",
+                      }
+                    : {
+                        borderColor: "color-mix(in oklab, var(--brand) 42%, transparent)",
+                        background: "color-mix(in oklab, #ffffff 92%, var(--brand))",
+                      }
+                }
+              >
+                {solutionsLabel}
+              </Link>
               {navItems.map((item) => (
                 <div key={item.href}>
                   <Link
