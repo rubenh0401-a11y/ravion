@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { seoAlternates } from "@/lib/seoDomains";
+import { getSiteLanguage, type SiteLanguage } from "@/lib/siteLanguage";
 
 export const metadata: Metadata = {
   title: "Solutions for Travel Operators",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const copy = {
+  de: {
   pill: "Reiseveranstalter",
   heroTitle: "Reisemängelansprüche lösen, bevor sie eskalieren.",
   heroSubline: "Schneller, günstiger und ohne Kontrollverlust.",
@@ -168,10 +170,180 @@ const copy = {
   ],
   finalTitle: "Effiziente Lösung vor der Eskalation.",
   finalText: "Interesse an einer Partnerschaft? Wir freuen uns auf Ihre Nachricht.",
+  sideTitle: "Vorinstanz für Reisemängelstreitigkeiten",
+  },
+  en: {
+    pill: "Travel operators",
+    heroTitle: "Resolve travel defect claims before they escalate.",
+    heroSubline: "Faster, more cost-efficient, and without losing control.",
+    heroLead:
+      "Ravion helps travel operators resolve disputes out of court before cases escalate through claims platforms, lawyers, or courts.",
+    heroBullets: [
+      "Independent pre-litigation resolution layer",
+      "Travel operators remain fully in control",
+      "No cost unless a settlement is concluded",
+    ],
+    heroNote:
+      "Built for travel operators that want to reduce complaint-related costs while offering customers a faster and more transparent resolution path.",
+    problemEyebrow: "The problem",
+    problemTitle:
+      "Travel defect claims are becoming a significant cost factor in the travel business.",
+    problemParagraphs: [
+      "Travel operators pay substantial amounts every year because of travel defects, cancellations, and deviations from booked services.",
+      "The actual compensation amount is often only one part of the total financial burden.",
+      "Many rejected or unanswered claims later escalate through claims platforms, lawyers, and courts. In those cases, travel operators do not only pay the original compensation amount, but also court costs, legal fees, and considerable internal handling effort.",
+      "At the same time, customers who feel ignored or treated unfairly are more likely to lose trust in the provider, leave negative feedback, or book with other operators in the future.",
+    ],
+    whatEyebrow: "What Ravion is",
+    whatTitle:
+      "An independent platform for resolving travel defect claims out of court.",
+    whatParagraphs: [
+      "Ravion acts as a neutral settlement platform between travelers and travel operators.",
+      "Instead of letting cases escalate directly to claims platforms, lawyers, or courts, Ravion creates an additional resolution path where disputes can be resolved earlier, faster, and at significantly lower cost.",
+      "Important: travel operators remain fully in control throughout the process.",
+      "Ravion does not issue binding decisions and does not require travel operators to accept settlement proposals. Every proposal can be reviewed, accepted, rejected, or negotiated further. This gives travel operators additional room to act before cases escalate into expensive legal proceedings.",
+    ],
+    approachEyebrow: "A structured path",
+    approachTitle: "How Ravion works before escalation.",
+    processSteps: [
+      "The customer submits the travel defect claim through Ravion.",
+      "Ravion assesses the case based on current case law, comparable judgments, and claim-specific factors.",
+      "Based on this assessment, Ravion proposes a fair settlement amount to the customer, oriented around the realistic probability of success in court.",
+      "If the customer accepts the proposal, the settlement is forwarded to the travel operator for review.",
+      "The travel operator decides independently whether to accept the proposal, reject it, negotiate further, or continue the case through its existing process.",
+    ],
+    exampleEyebrow: "Example",
+    exampleTitle: "From court probability to a settlement proposal.",
+    exampleLead:
+      "Based on the assessment, Ravion proposes a fair settlement to the customer, usually below the maximum possible amount.",
+    metrics: [
+      { label: "Claimed compensation", value: "EUR 800" },
+      { label: "Estimated court success probability", value: "75%" },
+      { label: "Proposed settlement", value: "EUR 600" },
+    ],
+    exampleText:
+      "If the customer accepts the proposal, the settlement is forwarded to the travel operator. The travel operator then decides independently whether to accept the proposal, reject it, or continue the case through its existing process.",
+    financialEyebrow: "Financial impact",
+    financialTitle: "Why this matters financially",
+    financialParagraphs: [
+      "In the current system, legal escalation often creates costs that significantly exceed the actual compensation amount.",
+      "In Germany, a travel defect case can additionally generate court fees, claimant legal costs, the travel operator's own legal costs, and considerable internal handling effort.",
+      "For a travel defect case with EUR 800 in claimed compensation, total case costs can therefore quickly exceed EUR 1,500.",
+    ],
+    costCards: [
+      {
+        title: "Traditional escalation",
+        amount: "EUR 1,500+",
+        text:
+          "Possible total exposure for a EUR 800 travel defect case once court fees, legal costs, administrative effort, and operational costs are included.",
+      },
+      {
+        title: "With Ravion",
+        amount: "~EUR 660",
+        text:
+          "EUR 600 settlement payment plus a 10% Ravion commission of EUR 60. This can reduce case-related total costs by more than 50%.",
+        highlighted: true,
+      },
+    ],
+    benefitsEyebrow: "Benefits for travel operators",
+    benefitsTitle: "A more efficient alternative before cases escalate externally.",
+    benefitSections: [
+      {
+        title: "Lower total cost per case",
+        paragraphs: [
+          "By resolving suitable cases early, travel operators can significantly reduce court costs, legal fees, internal handling effort, and external escalation costs.",
+        ],
+      },
+      {
+        title: "Greater strategic flexibility",
+        paragraphs: [
+          "Ravion does not replace a travel operator's existing complaint process.",
+          "Instead, it creates an additional option that can be used flexibly and selectively. Travel operators remain free to reject proposals or continue existing processes at any time.",
+        ],
+      },
+      {
+        title: "Faster resolutions",
+        paragraphs: [
+          "Traditional travel defect disputes often take months, sometimes even years.",
+          "Ravion is designed to enable resolutions within days. This reduces internal workload and improves operational efficiency.",
+        ],
+      },
+      {
+        title: "Higher customer satisfaction",
+        paragraphs: [
+          "Customers often escalate claims when they feel ignored or have to wait months for a response.",
+          "A fast, transparent, and cooperative resolution process improves the customer experience and increases the likelihood of long-term retention.",
+        ],
+      },
+      {
+        title: "Less escalation through claims platforms",
+        paragraphs: [
+          "The strong growth of consumer portals and claims providers has fundamentally changed customer behavior.",
+          "Today, claims can often be pursued with virtually no personal cost risk. Ravion gives travel operators an additional resolution path before these external escalation mechanisms take over.",
+        ],
+      },
+      {
+        title: "No interference with existing processes",
+        paragraphs: [
+          "Ravion is designed as a complementary pre-stage, not as a replacement for internal complaint handling.",
+          "It can be used selectively for cases where early settlement is commercially and operationally sensible.",
+        ],
+      },
+    ],
+    faqEyebrow: "Frequently asked questions",
+    faqTitle: "Practical questions from travel operators",
+    faqs: [
+      {
+        question: "When does Ravion charge a commission?",
+        answer:
+          "Ravion does not charge travel operators for case assessment, creating settlement proposals, or forwarding proposals for review. A commission is charged only if a settlement is accepted and concluded.",
+      },
+      {
+        question: "Are Ravion settlement proposals binding for the travel operator?",
+        answer:
+          "No. Ravion does not issue binding decisions. The travel operator can review each proposal and decide whether to accept it, reject it, negotiate further, or continue through its existing process.",
+      },
+      {
+        question: "How does Ravion fit into existing complaint processes?",
+        answer:
+          "Ravion is designed as an additional pre-stage before legal escalation, not as a replacement for internal complaint handling. It can be used selectively for cases where early settlement makes sense.",
+      },
+      {
+        question: "What happens after a customer accepts a settlement proposal?",
+        answer:
+          "The accepted proposal is forwarded to the travel operator for review. The travel operator makes the final decision and can assess the proposal against its legal position and commercial considerations.",
+      },
+      {
+        question: "Does Ravion act on behalf of customers like a claims company?",
+        answer:
+          "No. Ravion is not a traditional claims company and does not aim to escalate disputes into legal proceedings. Ravion acts as a neutral mediator, not as a consumer protection body. The goal is a fair outcome for both sides.",
+      },
+      {
+        question: "How high is the Ravion commission?",
+        answer:
+          "The Ravion commission is 10% of the concluded settlement amount. A minimum commission of EUR 39 applies.",
+      },
+      {
+        question: "What operational benefit does Ravion provide beyond the settlement amount?",
+        answer:
+          "Early resolution can reduce follow-up communication, legal coordination, court-related administration, and internal workload for long-running disputed cases.",
+      },
+    ],
+    finalTitle: "Efficient resolution before escalation.",
+    finalText: "Interested in a partnership? We look forward to hearing from you.",
+    sideTitle: "Pre-stage for travel defect disputes",
+  },
 } as const;
 
-export default function TravelOperatorSolutionsPage() {
-  const t = copy;
+export default async function TravelOperatorSolutionsPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ lang?: string; language?: string }>;
+}) {
+  const params = await searchParams;
+  const requestedLang = params?.lang ?? params?.language;
+  const lang: SiteLanguage = requestedLang === "de" || requestedLang === "en" ? requestedLang : await getSiteLanguage();
+  const t = copy[lang];
 
   return (
     <main className="px-4 pb-14 pt-7 sm:px-6 sm:pb-16 sm:pt-9 lg:pb-20 lg:pt-10">
@@ -212,7 +384,7 @@ export default function TravelOperatorSolutionsPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.16em]" style={{ color: "var(--muted)" }}>
                 Ravion
               </p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">Vorinstanz für Reisemängelstreitigkeiten</h2>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{t.sideTitle}</h2>
               <p className="mt-4 text-sm leading-relaxed sm:text-base" style={{ color: "var(--muted)" }}>
                 {t.heroNote}
               </p>
