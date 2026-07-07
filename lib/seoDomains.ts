@@ -13,6 +13,8 @@ export const publicRoutes = [
   "/passagierrechte",
   "/fluggastrechte-ueberblick",
   "/fahrgastrechte-ueberblick",
+  "/solutions",
+  "/solutions-reiseveranstalter",
   "/warum-schlichtung",
   "/wie-es-funktioniert",
   "/hilfe-kontakt",

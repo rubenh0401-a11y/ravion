@@ -52,8 +52,10 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
     startsActive(pathname, "/passagierrechte") ||
     startsActive(pathname, "/fluggastrechte-ueberblick") ||
     startsActive(pathname, "/fahrgastrechte-ueberblick");
-  const solutionsActive = startsActive(pathname, "/solutions");
+  const solutionsActive = pathname === "/solutions";
+  const travelSolutionsActive = pathname === "/solutions-reiseveranstalter";
   const solutionsLabel = lang === "en" ? "For airlines" : "Für Airlines";
+  const travelSolutionsLabel = lang === "en" ? "For travel operators" : "Für Reiseveranstalter";
 
   return (
     <header className="sticky top-0 z-30 px-4 pt-4 sm:px-6">
@@ -74,7 +76,7 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
               <LanguageSwitcher lang={lang} onChange={setLang} />
               <button
                 type="button"
-                className="sm:hidden rounded-full border px-3 py-1.5 text-sm"
+                className="lg:hidden rounded-full border px-3 py-1.5 text-sm"
                 style={{ borderColor: "var(--border)" }}
                 onClick={() => setOpen((v) => !v)}
                 aria-label={lang === "en" ? "Open navigation" : "Navigation öffnen"}
@@ -83,10 +85,10 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
               </button>
             </div>
 
-            <nav className="hidden items-center gap-2 sm:flex">
+            <nav className="hidden items-center gap-2 lg:flex">
               <Link
                 href="/solutions"
-                className={`mr-1 -translate-y-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold shadow-sm transition hover:-translate-y-2 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+                className={`-translate-y-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold shadow-sm transition hover:-translate-y-2 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
                   solutionsActive ? "text-white" : "text-blue-900"
                 }`}
                 style={
@@ -102,6 +104,25 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
                 }
               >
                 {solutionsLabel}
+              </Link>
+              <Link
+                href="/solutions-reiseveranstalter"
+                className={`mr-1 -translate-y-1.5 rounded-full border px-3.5 py-1.5 text-sm font-semibold shadow-sm transition hover:-translate-y-2 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+                  travelSolutionsActive ? "text-white" : "text-blue-900"
+                }`}
+                style={
+                  travelSolutionsActive
+                    ? {
+                        borderColor: "var(--brand)",
+                        background: "var(--brand)",
+                      }
+                    : {
+                        borderColor: "color-mix(in oklab, var(--brand) 42%, transparent)",
+                        background: "color-mix(in oklab, #ffffff 92%, var(--brand))",
+                      }
+                }
+              >
+                {travelSolutionsLabel}
               </Link>
               {navItems.map((item) => {
                 const active =
@@ -176,11 +197,11 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
           </div>
 
           {open ? (
-            <nav className="mt-3 grid gap-2 sm:hidden">
+            <nav className="mt-3 grid gap-2 lg:hidden">
               <Link
                 href="/solutions"
                 onClick={() => setOpen(false)}
-                className={`mb-1 block rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm ${
+                className={`block rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm ${
                   solutionsActive ? "text-white" : "text-blue-900"
                 }`}
                 style={
@@ -196,6 +217,26 @@ export default function SiteHeader({ initialLang }: { initialLang: Lang }) {
                 }
               >
                 {solutionsLabel}
+              </Link>
+              <Link
+                href="/solutions-reiseveranstalter"
+                onClick={() => setOpen(false)}
+                className={`mb-1 block rounded-lg border px-3 py-2 text-sm font-semibold shadow-sm ${
+                  travelSolutionsActive ? "text-white" : "text-blue-900"
+                }`}
+                style={
+                  travelSolutionsActive
+                    ? {
+                        borderColor: "var(--brand)",
+                        background: "var(--brand)",
+                      }
+                    : {
+                        borderColor: "color-mix(in oklab, var(--brand) 42%, transparent)",
+                        background: "color-mix(in oklab, #ffffff 92%, var(--brand))",
+                      }
+                }
+              >
+                {travelSolutionsLabel}
               </Link>
               {navItems.map((item) => (
                 <div key={item.href}>
