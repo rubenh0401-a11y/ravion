@@ -24,7 +24,7 @@ const copy = {
     "Entwickelt für Reiseveranstalter, die Reklamationskosten senken und Kunden gleichzeitig einen schnelleren, transparenteren Lösungsweg anbieten möchten.",
   problemEyebrow: "Das Problem",
   problemTitle:
-    "Reisemängelansprüche zählen zu den größten versteckten Kostenfaktoren im Reisegeschäft.",
+    "Reisemängelansprüche entwickeln sich zu einem erheblichen Kostenfaktor im Reisegeschäft.",
   problemParagraphs: [
     "Reiseveranstalter zahlen jährlich erhebliche Summen aufgrund von Reisemängeln, Stornierungen und Leistungsabweichungen.",
     "Dabei ist die eigentliche Entschädigung häufig nur ein Teil der tatsächlichen Gesamtkosten.",
@@ -65,7 +65,7 @@ const copy = {
   financialParagraphs: [
     "Im heutigen System verursachen rechtliche Eskalationen häufig Kosten, die deutlich über die eigentliche Entschädigung hinausgehen.",
     "In Deutschland kann ein Reisemängelfall zusätzlich Gerichtsgebühren, Anwaltskosten auf Klägerseite, eigene Rechtskosten des Reiseveranstalters sowie erheblichen internen Bearbeitungsaufwand verursachen.",
-    "Dadurch können die Gesamtkosten eines einzelnen Falls schnell auf über EUR 1.500 steigen.",
+    "Bei einem Reisemängelfall mit EUR 800 geforderter Entschädigung können die Gesamtkosten dadurch schnell auf über EUR 1.500 steigen.",
   ],
   costCards: [
     {
